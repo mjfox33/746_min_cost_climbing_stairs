@@ -2,13 +2,13 @@ class Solution:
     def minCostClimbingStairs(self, cost: list[int]) -> int:
         # Say f[i] is the final cost to climb to the top from step i. 
         # Then f[i] = cost[i] + min(f[i+1], f[i+2])
-        dp = list()
-        dp.append(cost[0])
-        dp.append(cost[1])
+        a=cost[0]
+        b=cost[1]
         for i in range(2,len(cost)):
-            dp.append(min(dp[i-1],dp[i-2]) + cost[i])
-        
-        return min(dp[len(cost)-1], dp[len(cost)-2]) 
+            c=min(a,b) + cost[i]
+            a=b
+            b=c
+        return min(a,b)
 
 s = Solution()
 test = [1,100,1,1,1,100,1,1,100,1]
